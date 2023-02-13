@@ -1,9 +1,11 @@
 // // variables
+const form = document.querySelector('#form-modal')
 const bookName = document.querySelector("#book-name");
 const bookWriter = document.querySelector("#book-writer");
 const bookPages = document.querySelector("#book-pages");
 const readStatus = document.querySelector("#read-status");
 const submitButton = document.querySelector("#submit");
+const addBookButton = document.querySelector('#add-book')
 
 // table table
 const table = document.querySelector("#table");
@@ -52,12 +54,25 @@ function clearTable(){
   tbody.innerHTML = "";
 }
 
+function resetInputValues(){
+  bookName.value = ""
+  bookWriter.value = ""
+  bookPages.value = ""
+  readStatus.value = "";
+}
+
 submitButton.addEventListener("click", (e) => {
   e.preventDefault();
   addBookToLibrary();
   clearTable();
   displayBooks();
+  resetInputValues();
+  form.style.display = "none";
 });
+
+addBookButton.onclick = function () {
+  form.style.display = "block";
+};
 
 displayBooks();
 
