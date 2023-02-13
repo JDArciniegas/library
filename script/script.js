@@ -5,7 +5,7 @@ const bookWriter = document.querySelector("#book-writer");
 const bookPages = document.querySelector("#book-pages");
 const readStatus = document.querySelector("#read-status");
 const submitButton = document.querySelector("#submit");
-const addBookButton = document.querySelector('#add-book')
+const addBookButton = document.querySelector('#add-book');
 
 // table table
 const table = document.querySelector("#table");
@@ -47,8 +47,13 @@ function displayBooks() {
     row.insertCell(1).innerText = book.writer;
     row.insertCell(2).innerText = book.pages;
     row.insertCell(3).innerText = book.read;
+    row.insertCell(4).innerHTML = '<button class="deleteBtn"> Delete</button>'
   });
 }
+
+
+
+
 
 function clearTable(){
   tbody.innerHTML = "";
@@ -75,6 +80,7 @@ addBookButton.onclick = function () {
 };
 
 displayBooks();
+
 
 
 
