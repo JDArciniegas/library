@@ -1,12 +1,11 @@
 // // variables
-const form = document.querySelector('#form-modal')
+const form = document.querySelector("#form-modal");
 const bookName = document.querySelector("#book-name");
 const bookWriter = document.querySelector("#book-writer");
 const bookPages = document.querySelector("#book-pages");
 const readStatus = document.querySelector("#read-status");
 const submitButton = document.querySelector("#submit");
-const addBookButton = document.querySelector('#add-book');
-
+const addBookButton = document.querySelector("#add-book");
 // table table
 const table = document.querySelector("#table");
 const tbody = document.querySelector("tbody");
@@ -35,40 +34,70 @@ function Book(title, author, pages, read) {
 }
 
 function addBookToLibrary() {
-  let newBook = new Book(bookName.value, bookWriter.value, bookPages.value, readStatus.value);
+  let newBook = new Book(
+    bookName.value,
+    bookWriter.value,
+    bookPages.value,
+    readStatus.value
+  );
   myLibrary.push(newBook);
 }
 
-function displayBooks() {
+function displayTable() {
+  clearTable();
   myLibrary.forEach((book, index) => {
-
-    const row = tbody.insertRow();
-
-    row.insertCell(0).innerText = book.title;
-    row.insertCell(1).innerText = book.writer;
-    row.insertCell(2).innerText = book.pages;
-    row.insertCell(3).innerText = book.read;
-    row.insertCell(4).innerHTML = `<button class="deleteBtn" data-index-number="${index}" onclick="removeRow(e)"> Delete</button>`
+    const row = document.createElement("tr");
+    Object.keys(book).forEach((property) => {
+      const td = document.createElement("td");
+      td.textContent = book[property];
+      if (property == "read") td.textContent = book[property] ? "Read" : "Not read";
+      row.appendChild(td);
+    });
+    row.appendChild(changeReadStatus(book));
+    row.appendChild(createDeleteButton(index));
+    tbody.appendChild(row);
   });
 }
 
+function changeReadStatus(book) {
+  let readTd = document.createElement("td");
+  let editButton = document.createElement("button");
+  editButton.textContent = "Change read status";
+  editButton.addEventListener("click", () => {
+    book.read = !book.read;
+    displayTable();
+  });
+  readTd.appendChild(editButton);
+  return readTd
+}
 
-function clearTable(){
+function createDeleteButton(index) {
+  let deleteTd = document.createElement("td");
+  let deleteButton = document.createElement("button");
+  deleteButton.textContent = "Delete";
+  deleteButton.addEventListener("click", () => {
+    myLibrary.splice(index, 1);
+    displayTable();
+  });
+  deleteTd.appendChild(deleteButton);
+  return deleteTd;
+}
+
+function clearTable() {
   tbody.innerHTML = "";
 }
 
-function resetInputValues(){
-  bookName.value = ""
-  bookWriter.value = ""
-  bookPages.value = ""
+function resetInputValues() {
+  bookName.value = "";
+  bookWriter.value = "";
+  bookPages.value = "";
   readStatus.value = "";
 }
 
 submitButton.addEventListener("click", (e) => {
   e.preventDefault();
   addBookToLibrary();
-  clearTable();
-  displayBooks();
+  displayTable();
   resetInputValues();
   form.style.display = "none";
 });
@@ -77,9 +106,4 @@ addBookButton.onclick = function () {
   form.style.display = "block";
 };
 
-displayBooks();
-
-
-
-
-
+displayTable();
