@@ -40,19 +40,17 @@ function addBookToLibrary() {
 }
 
 function displayBooks() {
-  myLibrary.forEach((book) => {
+  myLibrary.forEach((book, index) => {
+
     const row = tbody.insertRow();
 
     row.insertCell(0).innerText = book.title;
     row.insertCell(1).innerText = book.writer;
     row.insertCell(2).innerText = book.pages;
     row.insertCell(3).innerText = book.read;
-    row.insertCell(4).innerHTML = '<button class="deleteBtn"> Delete</button>'
+    row.insertCell(4).innerHTML = `<button class="deleteBtn" data-index-number="${index}" onclick="removeRow(e)"> Delete</button>`
   });
 }
-
-
-
 
 
 function clearTable(){
