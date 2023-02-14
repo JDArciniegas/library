@@ -56,12 +56,13 @@ function displayTable() {
       // create cells
       cell.innerText = `${book[key]}`;
       if (key == 'read'){
+        cell.innerText = ""
         cell.appendChild(createReadStatus(book))
       }
       row.appendChild(cell);
     }
 
-    row.appendChild(createDeleteButton());
+    row.appendChild(createDeleteButton(myLibrary));
     tbody.appendChild(row);
   });
 }
@@ -81,9 +82,9 @@ function createDeleteButton() {
 function createReadStatus(book) {
   const readUpdate = document.createElement("td");
   const readStatusButton = document.createElement("button");
-  readStatusButton.innerText = book.read;
+  readStatusButton.innerText = book.read ? "Read" : "Not Read"
   readStatusButton.addEventListener("click", () => {
-    e.target.innerText = book.read ? book.read : !book.read
+    book.read = !book.read;
     displayTable();
   });
   readUpdate.appendChild(readStatusButton);
