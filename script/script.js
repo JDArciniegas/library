@@ -6,6 +6,7 @@ const bookPages = document.querySelector("#book-pages");
 const readStatus = document.querySelector("#read-status");
 const submitButton = document.querySelector("#submit");
 const addBookButton = document.querySelector("#add-book");
+const inputs = document.querySelectorAll(".modal-content-input");
 // table table
 const table = document.querySelector("#table");
 const tbody = document.querySelector("tbody");
@@ -40,7 +41,8 @@ function addBookToLibrary() {
     bookPages.value,
     readStatus.value
   );
-  myLibrary.push(newBook);
+    myLibrary.push(newBook);
+
 }
 
 function displayTable() {
@@ -56,9 +58,9 @@ function displayTable() {
       const cell = document.createElement("td");
       // create cells
       cell.innerText = `${book[key]}`;
-      if (key == 'read'){
-        cell.innerText = ""
-        cell.appendChild(createReadStatus(book))
+      if (key == "read") {
+        cell.innerText = "";
+        cell.appendChild(createReadStatus(book));
       }
       row.appendChild(cell);
     }
@@ -86,13 +88,14 @@ function createReadStatus(book) {
   const readStatusButton = document.createElement("button");
   readStatusButton.innerText = book.read;
   readStatusButton.addEventListener("click", (e) => {
-    (readStatusButton.innerText === "Not Read") ? book.read = "Read" : book.read = "Not Read";
+    readStatusButton.innerText === "Not Read"
+      ? (book.read = "Read")
+      : (book.read = "Not Read");
     displayTable();
   });
   readUpdate.appendChild(readStatusButton);
   return readUpdate;
 }
-
 
 function clearTable() {
   tbody.innerHTML = "";
