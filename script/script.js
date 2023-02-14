@@ -45,42 +45,49 @@ function addBookToLibrary() {
 
 function displayTable() {
   clearTable();
-  myLibrary.forEach((book, index) => {
+  // loop through Array
+  myLibrary.forEach((book) => {
     const row = document.createElement("tr");
-    Object.keys(book).forEach((property) => {
-      const td = document.createElement("td");
-      td.textContent = book[property];
-      if (property == "read") td.textContent = book[property] ? "Read" : "Not read";
-      row.appendChild(td);
-    });
-    row.appendChild(changeReadStatus(book));
-    row.appendChild(createDeleteButton(index));
+    // loop thorugh Object
+    const keys = Object.keys(book);
+
+    for (const key in book) {
+      const cell = document.createElement("td");
+      // create cells
+      cell.innerText = `${book[key]}`;
+      if (key == 'read'){
+        cell.appendChild(createReadStatus(book))
+      }
+      row.appendChild(cell);
+    }
+
+    row.appendChild(createDeleteButton());
     tbody.appendChild(row);
   });
 }
 
-function changeReadStatus(book) {
-  let readTd = document.createElement("td");
-  let editButton = document.createElement("button");
-  editButton.textContent = "Change read status";
-  editButton.addEventListener("click", () => {
-    book.read = !book.read;
-    displayTable();
-  });
-  readTd.appendChild(editButton);
-  return readTd
-}
-
-function createDeleteButton(index) {
-  let deleteTd = document.createElement("td");
-  let deleteButton = document.createElement("button");
-  deleteButton.textContent = "Delete";
+function createDeleteButton() {
+  const deleteCell = document.createElement("td");
+  const deleteButton = document.createElement("button");
+  deleteButton.innerText = "Delete";
   deleteButton.addEventListener("click", () => {
     myLibrary.splice(index, 1);
     displayTable();
   });
-  deleteTd.appendChild(deleteButton);
-  return deleteTd;
+  deleteCell.appendChild(deleteButton);
+  return deleteCell;
+}
+
+function createReadStatus(book) {
+  const readUpdate = document.createElement("td");
+  const readStatusButton = document.createElement("button");
+  readStatusButton.innerText = book.read;
+  readStatusButton.addEventListener("click", () => {
+    e.target.innerText = book.read ? book.read : !book.read
+    displayTable();
+  });
+  readUpdate.appendChild(readStatusButton);
+  return readUpdate;
 }
 
 function clearTable() {

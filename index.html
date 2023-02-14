@@ -10,29 +10,33 @@
 </head>
 
 <body>
-  <div id="form-modal">
-    <form action="#" id="modal-content">
-      <input type="text" id="book-name" placeholder="Book Name" required>
-      <input type="text" id="book-writer" placeholder="Writer" required>
-      <input type="number" id="book-pages" placeholder="Number of Pages" required>
-      <input type="text" id="read-status" placeholder="Read or Not?" required>
-      <!-- <input type="checkbox" placeholder="Read or Not?" id="read-or-not-read">
-    <label for="read-or-not-read">Read or Not?</label> -->
-      <input type="submit" id="submit" value="Submit">
-    </form>
+  <div class="container">
+
+    <h1>Welcome to my Library</h1>
+    <button id="add-book">Add Book</button>
+    <div id="form-modal">
+      <form action="#" id="modal-content">
+        <input type="text" id="book-name" placeholder="Book Name" required>
+        <input type="text" id="book-writer" placeholder="Writer" required>
+        <input type="number" id="book-pages" placeholder="Number of Pages" required>
+        <input type="text" id="read-status" placeholder="Read or Not?" required>
+        <!-- <input type="checkbox" placeholder="Read or Not?" id="read-or-not-read">
+          <label for="read-or-not-read">Read or Not?</label> -->
+        <input type="submit" id="submit" value="Submit">
+      </form>
+    </div>
+
+    <table id="table">
+      <thead>
+        <td class="table-item">Book Name</td>
+        <td class="table-item">Writer</td>
+        <td class="table-item">Number of Pages</td>
+        <td class="table-item">Have you read it?</td>
+      </thead>
+      <tbody id="#tbody"></tbody>
+    </table>
+
   </div>
-
-  <table id="table">
-    <thead>
-      <td class="table-item">Book Name</td>
-      <td class="table-item">Writer</td>
-      <td class="table-item">Number of Pages</td>
-      <td class="table-item">Have you read it?</td>
-    </thead>
-    <tbody id="#tbody"></tbody>
-  </table>
-  <button id="add-book">Add Book</button>
-
 
   <script src="script/script.js"></script>
 </body>
