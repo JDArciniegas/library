@@ -87,7 +87,8 @@ tbody td {
   background-color: var(--orange);
 }
 
-.header button:hover, #submit:hover{
+.header button:hover,
+#submit:hover {
   background-color: var(--grey);
 }
 
@@ -99,7 +100,6 @@ button {
   font-size: 18px;
   border-radius: 10px;
   border: 1px solid var(--blue);
-  box-shadow: 2px 2px 4px var(--grey);
   width: 150px;
   height: 40px;
   transition: background-color 0.25s;
@@ -151,14 +151,23 @@ button:hover {
   margin-top: 50px;
 }
 
-#modal-content .modal-content-input {
+#modal-content .modal-content-input, #read-status {
   width: 80%;
   margin: 5px;
   padding: 5px;
-  height: 24px;
+  min-height: 24px;
   border-radius: 5px;
   border: 1px var(--lightblue) solid;
-  background-color: rgba(11, 39, 50, 0.2);
+  background-color: rgba(11, 39, 50, 0.1);
   color: var(--blue);
   font-size: 18px;
+  box-sizing: border-box;
+
 }
+
+#read-status option{
+  color: var(--blue);
+  background-color: rgba(11, 39, 50, 0.1);
+}
+
+

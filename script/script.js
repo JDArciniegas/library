@@ -21,7 +21,7 @@ const harryPotter = new Book(
   "Harry Potter & the philosofer stone",
   "J. K. Rowling",
   700,
-  "Not Read"
+  "Read"
 );
 
 let myLibrary = [gameOfThrones, harryPotter];
@@ -47,13 +47,14 @@ function displayTable() {
   clearTable();
   // loop through Array
   myLibrary.forEach((book, index) => {
+    console.log(index);
     const row = document.createElement("tr");
     // loop thorugh Object
     const keys = Object.keys(book);
 
     for (const key in book) {
-      // create cells
       const cell = document.createElement("td");
+      // create cells
       cell.innerText = `${book[key]}`;
       if (key == 'read'){
         cell.innerText = ""
@@ -80,14 +81,18 @@ function createDeleteButton(index) {
 }
 
 function createReadStatus(book) {
+  console.log(book.read);
+  const readUpdate = document.createElement("td");
   const readStatusButton = document.createElement("button");
-  readStatusButton.innerText = book.read ? "Read" : "Not Read"
-  readStatusButton.addEventListener("click", () => {
-    book.read = !book.read;
+  readStatusButton.innerText = book.read;
+  readStatusButton.addEventListener("click", (e) => {
+    (readStatusButton.innerText === "Not Read") ? book.read = "Read" : book.read = "Not Read";
     displayTable();
   });
-  return readStatusButton;
+  readUpdate.appendChild(readStatusButton);
+  return readUpdate;
 }
+
 
 function clearTable() {
   tbody.innerHTML = "";
