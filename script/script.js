@@ -42,8 +42,9 @@ function addBookToLibrary() {
     readStatus.value
   );
     myLibrary.push(newBook);
-
 }
+
+
 
 function displayTable() {
   clearTable();
@@ -110,6 +111,7 @@ function resetInputValues() {
 
 submitButton.addEventListener("click", (e) => {
   e.preventDefault();
+  validateForm();
   addBookToLibrary();
   displayTable();
   resetInputValues();
