@@ -46,7 +46,7 @@ function addBookToLibrary() {
 function displayTable() {
   clearTable();
   // loop through Array
-  myLibrary.forEach((book) => {
+  myLibrary.forEach((book, index) => {
     const row = document.createElement("tr");
     // loop thorugh Object
     const keys = Object.keys(book);
@@ -62,12 +62,12 @@ function displayTable() {
       row.appendChild(cell);
     }
 
-    row.appendChild(createDeleteButton(myLibrary));
+    row.appendChild(createDeleteButton(index));
     tbody.appendChild(row);
   });
 }
 
-function createDeleteButton() {
+function createDeleteButton(index) {
   const deleteCell = document.createElement("td");
   const deleteButton = document.createElement("button");
   deleteButton.innerText = "Delete";
