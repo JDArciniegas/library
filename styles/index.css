@@ -1,30 +1,164 @@
-table {
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=News+Cycle:wght@400;700&display=swap');
+
+
+:root {
+  /* color pallette */
+  --blue: rgb(11, 39, 50);
+  --orange: rgb(255, 84, 0);
+  --pink: rgb(220, 19, 108);
+  --lightblue: rgb(230, 253, 255);
+  --grey: rgb(126, 130, 135);
+  /* fonts */
+
+  --header-font: 'Abril Fatface', cursive;
+  --content: 'News Cycle', sans-serif;
+}
+
+
+body,
+html,
+:root {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--blue);
+  color: var(--lightblue);
+  font-size: 21px;
+  font-family: var(--content);
+}
+
+.container {
+  width: 80%;
+  margin: 5% auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--header-font);
+  letter-spacing: 3px;
+  font-size: 1.5rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
   width: 100%;
 }
 
-.table-item {
-  margin: 25px;
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table #thead {
+  font-weight: 700;
+  /* border-bottom: 3px var(--blue) solid; */
+  border-bottom: 3px double var(--orange);
+  height: 10vh;
+}
+
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+td:nth-child(n+2) {
+  width: 25%;
+}
+
+td:nth-last-child(-n+3) {
+  width: 15%;
+}
+
+tbody td {
+  padding: 10px 20px;
+  height: 40px;
+}
+
+.header button {
+  position: absolute;
+  right: 10px;
+  background-color: var(--orange);
+}
+
+.header button:hover, #submit:hover{
+  background-color: var(--grey);
+}
+
+button {
+  font-family: inherit;
+  font-weight: 700;
+  color: var(--lightblue);
+  background-color: var(--grey);
+  font-size: 18px;
+  border-radius: 10px;
+  border: 1px solid var(--blue);
+  box-shadow: 2px 2px 4px var(--grey);
+  width: 150px;
+  height: 40px;
+  transition: background-color 0.25s;
+}
+
+#submit {
+  font-family: inherit;
+  font-weight: 700;
+  color: var(--lightblue);
+  background-color: var(--orange);
+  font-size: 18px;
+  border-radius: 10px;
+  border: 1px solid var(--blue);
+  box-shadow: 4px 4px 10px var(--blue);
+  width: 150px;
+  height: 40px;
+  margin: 20px 0px;
+  transition: background-color 0.25s;
+}
+
+button:hover {
+  background-color: var(--orange);
 }
 
 #form-modal {
   display: none;
   /* Hidden by default */
-  position: fixed;
   /* Stay in place */
   z-index: 1;
   /* Sit on top */
-  padding-top: 100px;
-  /* Location of the box */
-  left: 0;
+  position: absolute;
   top: 0;
-  width: 100%;
+  left: 0;
+  width: 30vw;
   /* Full width */
-  height: 100%;
+  height: 100vh;
   /* Full height */
   overflow: auto;
   /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0);
-  /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4);
-  /* Black w/ opacity */
+  background-color: var(--lightblue);
+}
+
+#modal-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 50px;
+}
+
+#modal-content .modal-content-input {
+  width: 80%;
+  margin: 5px;
+  padding: 5px;
+  height: 24px;
+  border-radius: 5px;
+  border: 1px var(--lightblue) solid;
+  background-color: rgba(11, 39, 50, 0.2);
+  color: var(--blue);
+  font-size: 18px;
 }

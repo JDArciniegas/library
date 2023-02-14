@@ -52,8 +52,8 @@ function displayTable() {
     const keys = Object.keys(book);
 
     for (const key in book) {
-      const cell = document.createElement("td");
       // create cells
+      const cell = document.createElement("td");
       cell.innerText = `${book[key]}`;
       if (key == 'read'){
         cell.innerText = ""
@@ -80,15 +80,13 @@ function createDeleteButton(index) {
 }
 
 function createReadStatus(book) {
-  const readUpdate = document.createElement("td");
   const readStatusButton = document.createElement("button");
   readStatusButton.innerText = book.read ? "Read" : "Not Read"
   readStatusButton.addEventListener("click", () => {
     book.read = !book.read;
     displayTable();
   });
-  readUpdate.appendChild(readStatusButton);
-  return readUpdate;
+  return readStatusButton;
 }
 
 function clearTable() {

@@ -12,15 +12,15 @@
 <body>
   <div class="container">
     <div class="header">
-      <h1>Welcome to my Library</h1>
+      <h1>My Library</h1>
       <button id="add-book">Add Book</button>
     </div>
     <div id="form-modal">
       <form action="#" id="modal-content">
-        <input type="text" id="book-name" placeholder="Book Name" required>
-        <input type="text" id="book-writer" placeholder="Writer" required>
-        <input type="number" id="book-pages" placeholder="Number of Pages" required>
-        <input type="text" id="read-status" placeholder="Read or Not?" required>
+        <input type="text" class="modal-content-input" id="book-name" placeholder="Book Name" required>
+        <input type="text" class="modal-content-input" id="book-writer" placeholder="Writer" required>
+        <input type="number" class="modal-content-input" id="book-pages" placeholder="Number of Pages" required>
+        <input type="text" class="modal-content-input" id="read-status" placeholder="Read or Not?" required>
         <!-- <input type="checkbox" placeholder="Read or Not?" id="read-or-not-read">
           <label for="read-or-not-read">Read or Not?</label> -->
         <input type="submit" id="submit" value="Submit">
@@ -28,11 +28,12 @@
     </div>
 
     <table id="table">
-      <thead>
+      <thead id="thead">
         <td class="table-item">Book Name</td>
         <td class="table-item">Writer</td>
         <td class="table-item">Number of Pages</td>
-        <td class="table-item">Have you read it?</td>
+        <td class="table-item">Read Status</td>
+        <td class="table-item">Delete</td>
       </thead>
       <tbody id="#tbody"></tbody>
     </table>
